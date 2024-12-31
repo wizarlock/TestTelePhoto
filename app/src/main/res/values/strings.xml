@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TestTelePhoto</string>
+    <string name="default_drawing">0 lines</string>
+    <string name="not_default_drawing">100 lines</string>
+</resources>
