@@ -7,6 +7,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.testtelephoto.ui.screens.DrawingScreen
+import com.example.testtelephoto.ui.screens.NextScreen
 import com.example.testtelephoto.ui.screens.StartScreen
 
 
@@ -25,7 +26,10 @@ fun AppNavHost(
             StartScreen(onNavigateToDrawing = { navController.navigate(Drawing) })
         }
         composable<Drawing> {
-            DrawingScreen()
+            DrawingScreen(onNavigateToNextScreen = { navController.navigate(NextScreen) })
+        }
+        composable<NextScreen> {
+            NextScreen(onNavigateToDrawing = { navController.popBackStack() })
         }
     }
 }

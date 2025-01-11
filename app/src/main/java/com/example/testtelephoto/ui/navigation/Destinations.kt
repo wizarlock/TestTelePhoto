@@ -7,3 +7,6 @@ object Start
 
 @Serializable
 object Drawing
+
+@Serializable
+object NextScreen

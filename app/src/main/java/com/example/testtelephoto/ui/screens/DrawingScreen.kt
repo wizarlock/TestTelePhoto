@@ -46,11 +46,13 @@ import kotlin.random.Random
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DrawingScreen() {
+fun DrawingScreen(
+    onNavigateToNextScreen: () -> Unit,
+) {
     val topBarColor = MaterialTheme.colorScheme.surface
     val isDark = isSystemInDarkTheme()
     val colorBar = if (isDark) Color.White else Color.Black
-    val numOfLines = 200
+    val numOfLines = 0
     val listOfCords = mutableListOf<Pair<Coordinates, Coordinates>>()
     repeat(numOfLines) {
         listOfCords.add(
@@ -91,7 +93,12 @@ fun DrawingScreen() {
                     Row(
                         modifier = Modifier.fillMaxWidth()
                     ) {
-
+                        DefaultButton(
+                            text = "Next",
+                            minWidth = 240.dp,
+                            onClick = onNavigateToNextScreen,
+                            enabled = true
+                        )
                     }
                 }
             )

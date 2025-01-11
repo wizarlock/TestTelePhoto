@@ -9,7 +9,7 @@ lifecycleRuntimeKtx = "2.8.7"
 activityCompose = "1.9.3"
 composeBom = "2024.12.01"
 navigationCompose = "2.8.5"
-serialization = "1.6.0"
+serialization = "1.6.3"
 telephoto = "0.15.0-SNAPSHOT"
 
 [libraries]
