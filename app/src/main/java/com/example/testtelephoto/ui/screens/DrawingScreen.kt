@@ -35,16 +35,19 @@ import androidx.compose.ui.platform.ViewConfiguration
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
-import coil.request.CachePolicy
-import coil.request.ImageRequest
+import coil3.request.CachePolicy
+import coil3.request.ImageRequest
 import com.example.testtelephoto.R
+import me.saket.telephoto.ExperimentalTelephotoApi
+import me.saket.telephoto.zoomable.ZoomableContent
 import me.saket.telephoto.zoomable.ZoomableContentTransformation
-import me.saket.telephoto.zoomable.coil.ZoomableAsyncImage
+import me.saket.telephoto.zoomable.coil3.ZoomableAsyncImage
 import me.saket.telephoto.zoomable.rememberZoomableImageState
+import me.saket.telephoto.zoomable.spatial.CoordinateSpace
 import kotlin.random.Random
 
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalTelephotoApi::class)
 @Composable
 fun DrawingScreen(
     onNavigateToNextScreen: () -> Unit,
@@ -118,6 +121,9 @@ fun DrawingScreen(
                         get() = 0
                 }
             val imageState = rememberZoomableImageState(zoomableState)
+            val visibleImageBounds = with(imageState.zoomableState.coordinateSystem) {
+                contentBounds.rectIn(CoordinateSpace.ZoomableContent)
+            }
             var containerSizeDp: Pair<Dp, Dp> by remember { mutableStateOf(Pair(0.dp, 0.dp)) }
             val curDensity = LocalDensity.current
             var containerSizePx by remember { mutableStateOf(IntSize.Zero) }
