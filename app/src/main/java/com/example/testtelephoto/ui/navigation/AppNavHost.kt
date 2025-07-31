@@ -7,8 +7,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.testtelephoto.ui.screens.DrawingScreen
-import com.example.testtelephoto.ui.screens.NextScreen
-import com.example.testtelephoto.ui.screens.StartScreen
 
 
 @SuppressLint("WrongNavigateRouteType")
@@ -20,16 +18,10 @@ fun AppNavHost(
     NavHost(
         modifier = modifier,
         navController = navController,
-        startDestination = Start
+        startDestination = Drawing
     ) {
-        composable<Start> {
-            StartScreen(onNavigateToDrawing = { navController.navigate(Drawing) })
-        }
         composable<Drawing> {
-            DrawingScreen(onNavigateToNextScreen = { navController.navigate(NextScreen) })
-        }
-        composable<NextScreen> {
-            NextScreen(onNavigateToDrawing = { navController.popBackStack() })
+            DrawingScreen()
         }
     }
 }
